@@ -1,0 +1,102 @@
+span, a, li, p, h1, h2, input, button, label {font-family: 'Montserrat', sans-serif;}
+a {text-decoration: none;}
+input {display: inline-block;}
+span {padding: 2px}
+ul {padding: 0;}
+li {list-style-type: none;display: grid;grid-template-columns: 3fr 2fr 1fr;border-radius: 5px;padding-left: .2em;}
+form {display: flex;max-width: 100%;flex-direction: column;}
+form input {margin-bottom: 1em;padding: 5px;background-color: rgba(213, 24, 24, 0.51);border: none;color: #000;border-radius: 5px;}
+#movie-rating {text-align: center;}
+li:nth-child(even) {background-color: rgba(239, 216, 216, 0.1)}
+.movie-title {text-transform: capitalize;}
+.rating:before {content: 'Rating: '}
+button {background-color: #800000;border: none;border-radius: 5px;color: #fff;transition: ease all .25s;line-height: 1.5;}
+button:active {background-color: #400080;}
+
+
+li {transition: ease all .5s;height: 34px;opacity: 1}
+.move {height: 0px;opacity: 0;transition: ease all .25s}
+
+@media screen and (min-width: 500px ){
+    form {display: inline-block;}
+    #hidden {height: 100px;}
+
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+:root {
+    --body-bg: hsl(0, 0%, 15%)
+}
+
+html {
+    color-scheme: dark light;
+}
+
+body {
+    background: var(--body-bg);
+    color: #fff;
+    margin: 0;
+    line-height: 1.5;
+    font-size: 1.25rem
+}
+
+.wrap {
+    max-width: 50rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+}
+
+.site-title {
+    font-size: 2.2rem;
+    text-align: center;
+}
+
+section {
+    padding-block: 2rem;
+    margin-bottom: 1.5em;
+}
+
+.diagonal {
+    --skew-angel: -5deg;
+    --background: linear-gradient(45deg, #ccffcc, #ffffcc, #ffcccc);
+    position: relative;
+    isolation: isolate;
+    color: #000;
+}
+
+.diagonal::after {
+    content: '';
+    background: steelblue;
+    position: absolute;
+    inset: 0;
+    transform: skewY(var(--skew-angel));
+    z-index: -1;
+    background: var(--background);
+}
+
+#add-movie-section {cursor: pointer;text-shadow: 0px 0px #000;display: inline-block;transition: ease all .25s;}
+#add-movie-section span {opacity: 0;transition: ease all .25s;text-shadow: 0px 0px 5px #d06b6b;}
+#add-movie-section:hover span {opacity: 1;}
+#add-movie-section:hover {text-shadow: 0px 0px 5px #d06b6b;}
+#hidden {height: 150px;opacity: 1; transition: ease all .5s;}
+
+#hidden.on {height: 0;opacity: 0;}
+
+.wavy {
+    background: linear-gradient(to right,#800000,#400080);
+    --mask:
+      radial-gradient(43.01px at 50% 60.00px,#000 99%,#0000 101%) calc(50% - 50px) 0/100px 51% repeat-x,
+      radial-gradient(43.01px at 50% -35px,#0000 99%,#000 101%) 50% 25px/100px calc(51% - 25px) repeat-x,
+      radial-gradient(43.01px at 50% calc(100% - 60.00px),#000 99%,#0000 101%) calc(50% - 50px) 100%/100px 51% repeat-x,
+      radial-gradient(43.01px at 50% calc(100% + 35.00px),#0000 99%,#000 101%) 50% calc(100% - 25px)/100px calc(51% - 25px) repeat-x;
+    -webkit-mask: var(--mask);
+            mask: var(--mask);
+  }
+
+.thumb-up, .thumb-down {cursor: pointer;}
+/* .thumb-up:active, .thumb-down:active {font-size: 1.1em;} */

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Rankings</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="site-title">
+        <h1>Movie Rankings</h1>
+    </div>
+
+    <section class="wavy">
+        <div class="wrap">
+            <h2>The Rankings...</h2>
+            <p>Vote up or down on a movie</p>
+            <ul id="movie-list"></ul>
+        </div>
+    </section>
+
+    <section class="diagonal">
+        <div class="wrap">
+            <h2 id="add-movie-section">Add A Movie<span>?</span></h2>
+            <!-- Make this section collapsable -->
+            <div id="hidden" class="on">
+                <form>
+                    <input type="text" id="movie-name" value="Enter Movie Title" onclick="clearInput(this)"></input>
+                    <button id="add-movie">Add Movie</button>
+                </form>
+                <p id="user-alert">&nbsp;</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
