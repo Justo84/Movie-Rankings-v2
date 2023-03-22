@@ -56,7 +56,6 @@ function generateMovies() {
 }
 
 function Movie(key) {
-    console.log(movieObject[key].title)
     let movieId = [key];
     let movieTitle = movieObject[key].title;
     let movieRating = movieObject[key].upvote - movieObject[key].downvote
