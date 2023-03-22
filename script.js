@@ -36,11 +36,11 @@ let movieObject = {
 const movieSection = document.getElementById("add-movie-section");
 const hiddenSection = document.getElementById("hidden");
 
-movieSection.addEventListener("click", () => { hiddenSection.classList.toggle("on") })
+movieSection.addEventListener("click", () => { hiddenSection.classList.toggle("on") });
 
 const movieListUL = document.getElementById("movie-list");
 let userAlert = document.getElementById("user-alert");
-document.getElementById("add-movie").addEventListener("click", (event) => { addMovie(event) });
+document.getElementById("add-movie").addEventListener("click", (e) => { addMovie(e) });
 
 function clearInput(input) {
     input.value = "";
