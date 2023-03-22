@@ -82,8 +82,8 @@ section {
 }
 
 #add-movie-section {cursor: pointer;text-shadow: 0px 0px #000;display: inline-block;transition: ease all .25s;}
-#add-movie-section span {opacity: 0;transition: ease all .25s;text-shadow: 0px 0px 5px #d06b6b;}
-#add-movie-section:hover span {opacity: 1;}
+#add-movie-section span {opacity: 1;transition: ease all .25s;text-shadow: none;}
+#add-movie-section:hover span {opacity: 0;}
 #add-movie-section:hover {text-shadow: 0px 0px 5px #d06b6b;}
 #hidden {height: 150px;opacity: 1; transition: ease all .5s;}
 
