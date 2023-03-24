@@ -55,11 +55,18 @@ function generateMovies() {
     }
 }
 
+function movieScore(upvote, downvote) {
+    return Math.round(upvote/(upvote + downvote) * 100)
+}
+
+console.log(movieScore(993, 13))
+
 function Movie(key) {
     console.log(movieObject[key].title)
     let movieId = [key];
     let movieTitle = movieObject[key].title;
-    let movieRating = movieObject[key].upvote - movieObject[key].downvote
+    // let movieRating = movieObject[key].upvote - movieObject[key].downvote
+    let movieRating = movieScore(movieObject[key].upvote, movieObject[key].downvote)
 
     this.Initialize = initialize;
 
@@ -108,7 +115,8 @@ function Movie(key) {
 }
 
 function sortMovies(movie) {
-    currentMovieRating = movieObject[movie.dataset.id].upvote - movieObject[movie.dataset.id].downvote;
+    // currentMovieRating = movieObject[movie.dataset.id].upvote - movieObject[movie.dataset.id].downvote;
+    currentMovieRating = movieScore(movieObject[movie.dataset.id].upvote, movieObject[movie.dataset.id].downvote)
     previousMovie = movieListUL.firstChild;
     do {
         previousMovieRating = parseInt(previousMovie.querySelector(".rating").innerHTML);
@@ -134,7 +142,10 @@ function findMovie(e, vote) {
     } else if (vote === "down") {
         selectedMovie.downvote += 1
     }
-    selectedMovieRating = selectedMovie.upvote - selectedMovie.downvote;
+
+    // selectedMovieRating = selectedMovie.upvote - selectedMovie.downvote;
+    selectedMovieRating = movieScore(selectedMovie.upvote, selectedMovie.downvote)
+    
     movieLi.querySelector(".rating").innerHTML = selectedMovieRating;
 
     if (movieLi === movieListUL.firstChild) {
