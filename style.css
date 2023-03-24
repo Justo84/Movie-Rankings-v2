@@ -102,3 +102,5 @@ section {
   }
 
 .thumb-up, .thumb-down {cursor: pointer;}
+.vote-up {background-color: rgba(139, 255, 139, 0.42);}
+.vote-down {background-color: rgba(255, 100, 100, 0.462);}

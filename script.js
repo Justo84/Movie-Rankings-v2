@@ -38,6 +38,7 @@ const hiddenSection = document.getElementById("hidden");
 
 movieSection.addEventListener("click", () => { hiddenSection.classList.toggle("on") });
 
+
 const movieListUL = document.getElementById("movie-list");
 let userAlert = document.getElementById("user-alert");
 document.getElementById("add-movie").addEventListener("click", (e) => { addMovie(e) });
@@ -56,7 +57,7 @@ function generateMovies() {
 }
 
 function movieScore(upvote, downvote) {
-    return Math.round(upvote/(upvote + downvote) * 100)
+    return Math.round(upvote / (upvote + downvote) * 100)
 }
 
 console.log(movieScore(993, 13))
@@ -136,12 +137,22 @@ function findMovie(e, vote) {
 
     if (vote === "up") {
         selectedMovie.upvote += 1
+        movieLi.classList.add("vote-up");
+        setTimeout(() => {
+            movieLi.classList.remove("vote-up");
+        }, 250)
+
     } else if (vote === "down") {
         selectedMovie.downvote += 1
+        movieLi.classList.add("vote-down");
+        setTimeout(() => {
+            movieLi.classList.remove("vote-down");
+        }, 250)
+
     }
 
     selectedMovieRating = movieScore(selectedMovie.upvote, selectedMovie.downvote)
-    
+
     movieLi.querySelector(".rating").innerHTML = selectedMovieRating;
 
     if (movieLi === movieListUL.firstChild) {
