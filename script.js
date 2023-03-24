@@ -60,13 +60,11 @@ function movieScore(upvote, downvote) {
     return Math.round(upvote / (upvote + downvote) * 100)
 }
 
-console.log(movieScore(993, 13))
-
 function Movie(key) {
     let movieId = [key];
     let movieTitle = movieObject[key].title;
     let movieRating = movieScore(movieObject[key].upvote, movieObject[key].downvote)
-
+    console.log(movieId)
     this.Initialize = initialize;
 
     return;
@@ -134,6 +132,10 @@ function sortMovies(movie) {
 function findMovie(e, vote) {
     selectedMovie = movieObject[e.target.parentNode.parentNode.dataset.id];
     movieLi = e.target.parentNode.parentNode;
+    movieListUL.querySelectorAll('.move').forEach((element) => {
+        element.classList.remove('move');
+    });
+
 
     if (vote === "up") {
         selectedMovie.upvote += 1
@@ -175,9 +177,6 @@ function findMovie(e, vote) {
             movieLi.classList.remove("move");
         }, 500)
     } else {
-        movieListUL.querySelectorAll('.move').forEach((element) => {
-            element.classList.remove('move');
-        });
         return
     }
 
@@ -195,9 +194,10 @@ function addMovie(event) {
     } else if (movieName === "" || movieName == "enter movie title") {
         userAlert.innerHTML = "Enter a valid movie title";
     } else {
-        movieObject[movieId] = { title: movieName, rating: 0, upvote: 0, downvote: 0 };
+        movieObject[movieId] = { title: movieName, rating: 50, upvote: 0, downvote: 0 };
         movieListUL.innerHTML = "";
         userAlert.innerHTML = "Movie added";
+        console.log(movieObject)
         generateMovies()
     }
 }
