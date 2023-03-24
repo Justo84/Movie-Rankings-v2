@@ -13,6 +13,7 @@ form input {margin-bottom: 1em;padding: 5px;background-color: rgba(213, 24, 24, 
 li:nth-child(even) {background-color: rgba(239, 216, 216, 0.1)}
 .movie-title {text-transform: capitalize;}
 .rating:before {content: 'Rating: '}
+.rating:after {content: '%'}
 button {background-color: #800000;border: none;border-radius: 5px;color: #fff;transition: ease all .25s;line-height: 1.5;}
 button:active {background-color: #400080;}
 
