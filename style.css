@@ -3,7 +3,10 @@ a {text-decoration: none;}
 input {display: inline-block;}
 span {padding: 2px}
 ul {padding: 0;}
-li {list-style-type: none;display: grid;grid-template-columns: 3fr 2fr 1fr;border-radius: 5px;padding-left: .2em;}
+li {list-style-type: none;display: grid;grid-template-columns: 4fr 2fr 1fr;border-radius: 5px;padding-left: .2em;transition: ease all .5s;opacity: 1;height: 64px;line-height: 1.1;align-items: center;}
+li>span:first-child {padding-right: 10px;}
+li span:last-child {text-align: center;}
+
 form {display: flex;max-width: 100%;flex-direction: column;}
 form input {margin-bottom: 1em;padding: 5px;background-color: rgba(213, 24, 24, 0.51);border: none;color: #000;border-radius: 5px;}
 #movie-rating {text-align: center;}
@@ -13,12 +16,11 @@ li:nth-child(even) {background-color: rgba(239, 216, 216, 0.1)}
 button {background-color: #800000;border: none;border-radius: 5px;color: #fff;transition: ease all .25s;line-height: 1.5;}
 button:active {background-color: #400080;}
 
-
-li {transition: ease all .5s;height: 34px;opacity: 1}
 .move {height: 0px;opacity: 0;transition: ease all .25s}
 
 @media screen and (min-width: 500px ){
     form {display: inline-block;}
+    li {height: 34px;}
     #hidden {height: 100px;}
 
 }
@@ -80,8 +82,8 @@ section {
 }
 
 #add-movie-section {cursor: pointer;text-shadow: 0px 0px #000;display: inline-block;transition: ease all .25s;}
-#add-movie-section span {opacity: 0;transition: ease all .25s;text-shadow: 0px 0px 5px #d06b6b;}
-#add-movie-section:hover span {opacity: 1;}
+#add-movie-section span {opacity: 1;transition: ease all .25s;text-shadow: none;}
+#add-movie-section:hover span {opacity: 0;}
 #add-movie-section:hover {text-shadow: 0px 0px 5px #d06b6b;}
 #hidden {height: 150px;opacity: 1; transition: ease all .5s;}
 
