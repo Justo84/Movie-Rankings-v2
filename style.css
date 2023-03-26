@@ -82,13 +82,14 @@ section {
     background: var(--background);
 }
 
-#add-movie-section {cursor: pointer;text-shadow: 0px 0px #000;display: inline-block;transition: ease all .25s;}
+#add-movie-section h2 {cursor: pointer;text-shadow: 0px 0px #000;display: inline-block;transition: ease all .25s;}
 #add-movie-section span {opacity: 1;transition: ease all .25s;text-shadow: none;}
 #add-movie-section:hover span {opacity: 0;}
 #add-movie-section:hover {text-shadow: 0px 0px 5px #d06b6b;}
-#hidden {height: 150px;opacity: 1; transition: ease all .5s;}
 
-#hidden.on {height: 0;opacity: 0;}
+#add-form {height: 0;opacity: 0;transition: ease all .5s;}
+.on #add-form {height: 150px;opacity: 1; }
+
 
 .wavy {
     background: linear-gradient(to right,#800000,#400080);

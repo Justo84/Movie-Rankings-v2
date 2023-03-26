@@ -34,9 +34,9 @@ let movieObject = {
 }
 
 const movieSection = document.getElementById("add-movie-section");
-const hiddenSection = document.getElementById("hidden");
+// const hiddenSection = document.getElementById("hidden");
 
-movieSection.addEventListener("click", () => { hiddenSection.classList.toggle("on") });
+movieSection.addEventListener("click", () => { movieSection.classList.toggle("on") });
 
 
 const movieListUL = document.getElementById("movie-list");
