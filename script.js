@@ -36,7 +36,7 @@ let movieObject = {
 const movieSection = document.getElementById("add-movie-section");
 // const hiddenSection = document.getElementById("hidden");
 
-movieSection.addEventListener("click", () => { movieSection.classList.toggle("on") });
+movieSection.querySelector("h2").addEventListener("click", () => { movieSection.classList.toggle("on") });
 
 
 const movieListUL = document.getElementById("movie-list");
@@ -194,7 +194,7 @@ function addMovie(event) {
     } else if (movieName === "" || movieName == "enter movie title") {
         userAlert.innerHTML = "Enter a valid movie title";
     } else {
-        movieObject[movieId] = { title: movieName, rating: 50, upvote: 0, downvote: 0 };
+        movieObject[movieId] = { title: movieName, rating: 0, upvote: 1, downvote: 1 };
         movieListUL.innerHTML = "";
         userAlert.innerHTML = "Movie added";
         console.log(movieObject)
