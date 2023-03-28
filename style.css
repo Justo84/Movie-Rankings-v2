@@ -4,12 +4,13 @@ a {text-decoration: none;}
 input {display: inline-block;}
 span {padding: 2px}
 ol {padding: 0;}
-li {display: grid;grid-template-columns: 4fr 2fr 1fr;border-radius: 5px;padding-left: .2em;transition: ease all .5s;opacity: 1;height: 64px;line-height: 1.1;align-items: center;}
+li {width:100%;border-radius: 5px;padding-left: .2em;transition: ease all .5s;opacity: 1;height: 64px}
+li>div {display: grid;grid-template-columns: 4fr 2fr 1fr;border-radius: 5px;padding-left: .2em;align-items: center;height: 100%;}
 li>span:first-child {padding-right: 10px;}
 li span:last-child {text-align: center;}
 
 form {display: flex;max-width: 100%;flex-direction: column;}
-form input {margin-bottom: 1em;padding: 5px;background-color: rgba(213, 24, 24, 0.51);border: none;color: #000;border-radius: 5px;}
+form input {margin-bottom: 1em;padding: 5px;background-color:#400080;border: none;color: #fff;border-radius: 5px;}
 #movie-rating {text-align: center;}
 li:nth-child(even) {background-color: rgba(239, 216, 216, 0.1)}
 .movie-title {text-transform: capitalize;}
