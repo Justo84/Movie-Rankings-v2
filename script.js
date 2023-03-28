@@ -109,8 +109,9 @@ function Movie(key) {
     }
 
     function sortMovies(movie) {
-        currentMovieRating = movieScore(movieObject[movie.dataset.id].upvote, movieObject[movie.dataset.id].downvote)
-        previousMovie = movieListUL.firstChild;
+        let currentMovieRating = movieScore(movieObject[movie.dataset.id].upvote, movieObject[movie.dataset.id].downvote)
+        let previousMovie = movieListUL.firstChild;
+        let previousMovieRating;
         do {
             previousMovieRating = parseInt(previousMovie.querySelector(".rating").innerHTML);
             if (currentMovieRating > previousMovieRating) {
@@ -127,8 +128,8 @@ function Movie(key) {
     }
 
     function findMovie(e, vote) {
-        selectedMovie = movieObject[e.target.parentNode.parentNode.parentNode.dataset.id];
-        movieLi = e.target.parentNode.parentNode.parentNode;
+        let selectedMovie = movieObject[e.target.parentNode.parentNode.parentNode.dataset.id];
+        let movieLi = e.target.parentNode.parentNode.parentNode;
         movieListUL.querySelectorAll('.move').forEach((element) => {
             element.classList.remove('move');
         });
