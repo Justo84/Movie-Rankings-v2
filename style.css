@@ -1,11 +1,11 @@
 span, a, li, p, h1, h2, input, button, label {font-family: 'Montserrat', sans-serif;line-height: 1;}
-h1 {padding: .5em 0;}
+h1 {padding: .5em 0;font-size: 20vw;}
 a {text-decoration: none;}
 input {display: inline-block;}
 span {padding: 2px}
-ol {padding: 0;}
+ol {padding: 0 0 0 1em;}
 li {width:100%;border-radius: 5px;padding-left: .2em;transition: ease all .5s;opacity: 1;height: 64px}
-li>div {display: grid;grid-template-columns: 4fr 2fr 1fr;border-radius: 5px;padding-left: .2em;align-items: center;height: 100%;}
+li>div {display:grid;grid-template-columns: 4fr 1fr 2fr;border-radius: 5px;padding-left: .2em;align-items: center;height: 100%;}
 li>span:first-child {padding-right: 10px;}
 li span:last-child {text-align: center;}
 
@@ -14,7 +14,8 @@ form input {margin-bottom: 1em;padding: 5px;background-color:#400080;border: non
 #movie-rating {text-align: center;}
 li:nth-child(even) {background-color: rgba(239, 216, 216, 0.1)}
 .movie-title {text-transform: capitalize;}
-.rating:before {content: 'Rating: '}
+.rating {text-align: center;}
+/* .rating:before {content: 'Rating: '} */
 .rating:after {content: '%'}
 button {background-color: #800000;border: none;border-radius: 5px;color: #fff;transition: ease all .25s;line-height: 1.5;}
 button:active {background-color: #400080;}
@@ -22,9 +23,11 @@ button:active {background-color: #400080;}
 .move {height: 0px;opacity: 0;transition: ease all .25s}
 
 @media screen and (min-width: 500px ){
+    h1 {font-size: 5rem;}
     form {display: inline-block;}
     li {height: 34px;}
     #hidden {height: 100px;}
+    li>div {grid-template-columns: 4fr 2fr 1fr;}
 
 }
 
