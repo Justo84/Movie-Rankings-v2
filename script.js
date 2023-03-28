@@ -94,13 +94,18 @@ function Movie(key) {
         thumbUp.innerHTML = "👍";
         thumbDown.innerHTML = "👎";
 
+        // div wrapper for inner li
+        const divWrapper = document.createElement("div");
+        liNode.append(divWrapper)
+
         // building li and placing spans
-        liNode.appendChild(titleSpan);
+        divWrapper.appendChild(titleSpan);
         titleSpan.appendChild(titleText);
         ratingSpan.appendChild(ratingNumber);
-        liNode.append(ratingSpan);
+        divWrapper.append(ratingSpan);
         thumbsSpan.append(thumbUp, thumbDown);
-        liNode.append(thumbsSpan);
+        divWrapper.append(thumbsSpan);
+
 
         // sort movies if there are more than one, otherwise add first movie
         if (movieListUL.children.length > 0) {
@@ -130,8 +135,8 @@ function sortMovies(movie) {
 }
 
 function findMovie(e, vote) {
-    selectedMovie = movieObject[e.target.parentNode.parentNode.dataset.id];
-    movieLi = e.target.parentNode.parentNode;
+    selectedMovie = movieObject[e.target.parentNode.parentNode.parentNode.dataset.id];
+    movieLi = e.target.parentNode.parentNode.parentNode;
     movieListUL.querySelectorAll('.move').forEach((element) => {
         element.classList.remove('move');
     });
