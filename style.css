@@ -1,4 +1,5 @@
-span, a, li, p, h1, h2, input, button, label {font-family: 'Montserrat', sans-serif;}
+span, a, li, p, h1, h2, input, button, label {font-family: 'Montserrat', sans-serif;line-height: 1;}
+h1 {padding: .5em 0;}
 a {text-decoration: none;}
 input {display: inline-block;}
 span {padding: 2px}
