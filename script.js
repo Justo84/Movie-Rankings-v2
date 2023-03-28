@@ -34,14 +34,10 @@ let movieObject = {
 }
 
 const movieSection = document.getElementById("add-movie-section");
-// const hiddenSection = document.getElementById("hidden");
-
 movieSection.querySelector("h2").addEventListener("click", () => { movieSection.classList.toggle("on") });
-
 
 const movieListUL = document.getElementById("movie-list");
 let userAlert = document.getElementById("user-alert");
-document.getElementById("add-movie").addEventListener("click", (e) => { addMovie(e) });
 
 function clearInput(input) {
     input.value = "";
@@ -56,9 +52,6 @@ function generateMovies() {
     }
 }
 
-function movieScore(upvote, downvote) {
-    return Math.round(upvote / (upvote + downvote) * 100)
-}
 
 function Movie(key) {
     let movieId = [key];
@@ -114,78 +107,87 @@ function Movie(key) {
             movieListUL.append(liNode);
         }
     }
-}
 
-function sortMovies(movie) {
-    currentMovieRating = movieScore(movieObject[movie.dataset.id].upvote, movieObject[movie.dataset.id].downvote)
-    previousMovie = movieListUL.firstChild;
-    do {
-        previousMovieRating = parseInt(previousMovie.querySelector(".rating").innerHTML);
-        if (currentMovieRating > previousMovieRating) {
-            previousMovie.before(movie)
+    function sortMovies(movie) {
+        currentMovieRating = movieScore(movieObject[movie.dataset.id].upvote, movieObject[movie.dataset.id].downvote)
+        previousMovie = movieListUL.firstChild;
+        do {
+            previousMovieRating = parseInt(previousMovie.querySelector(".rating").innerHTML);
+            if (currentMovieRating > previousMovieRating) {
+                previousMovie.before(movie)
+            }
+            else if (previousMovie === movieListUL.lastChild) {
+                previousMovie.after(movie)
+                return
+            }
+            else {
+                previousMovie = previousMovie.nextElementSibling;
+            }
+        } while (currentMovieRating <= previousMovieRating)
+    }
+
+    function findMovie(e, vote) {
+        selectedMovie = movieObject[e.target.parentNode.parentNode.parentNode.dataset.id];
+        movieLi = e.target.parentNode.parentNode.parentNode;
+        movieListUL.querySelectorAll('.move').forEach((element) => {
+            element.classList.remove('move');
+        });
+
+
+        if (vote === "up") {
+            selectedMovie.upvote += 1
+            movieLi.classList.add("vote-up");
+            setTimeout(() => {
+                movieLi.classList.remove("vote-up");
+            }, 250)
+
+        } else if (vote === "down") {
+            selectedMovie.downvote += 1
+            movieLi.classList.add("vote-down");
+            setTimeout(() => {
+                movieLi.classList.remove("vote-down");
+            }, 250)
+
         }
-        else if (previousMovie === movieListUL.lastChild) {
-            previousMovie.after(movie)
+
+        selectedMovieRating = movieScore(selectedMovie.upvote, selectedMovie.downvote)
+
+        movieLi.querySelector(".rating").innerHTML = selectedMovieRating;
+
+        if (movieLi === movieListUL.firstChild) {
+            prevMovie = NaN
+        } else {
+            prevMovie = parseInt(movieLi.previousElementSibling.querySelector(".rating").innerHTML);
+        }
+        if (movieLi === movieListUL.lastChild) {
+            nextMovie = NaN
+        } else {
+            nextMovie = parseInt(movieLi.nextElementSibling.querySelector(".rating").innerHTML);
+        }
+
+        if (selectedMovieRating > prevMovie || selectedMovieRating < nextMovie && (selectedMovieRating != parseInt(movieLi.nextElementSibling.querySelector(".rating").innerHTML))) {
+            movieLi.classList.add("move");
+            setTimeout(() => {
+                sortMovies(movieLi);
+            }, 250)
+            setTimeout(() => {
+                movieLi.classList.remove("move");
+            }, 500)
+        } else {
             return
         }
-        else {
-            previousMovie = previousMovie.nextElementSibling;
-        }
-    } while (currentMovieRating <= previousMovieRating)
+
+    }
+
+    function movieScore(upvote, downvote) {
+        return Math.round(upvote / (upvote + downvote) * 100)
+    }
+
+
 }
 
-function findMovie(e, vote) {
-    selectedMovie = movieObject[e.target.parentNode.parentNode.parentNode.dataset.id];
-    movieLi = e.target.parentNode.parentNode.parentNode;
-    movieListUL.querySelectorAll('.move').forEach((element) => {
-        element.classList.remove('move');
-    });
 
-
-    if (vote === "up") {
-        selectedMovie.upvote += 1
-        movieLi.classList.add("vote-up");
-        setTimeout(() => {
-            movieLi.classList.remove("vote-up");
-        }, 250)
-
-    } else if (vote === "down") {
-        selectedMovie.downvote += 1
-        movieLi.classList.add("vote-down");
-        setTimeout(() => {
-            movieLi.classList.remove("vote-down");
-        }, 250)
-
-    }
-
-    selectedMovieRating = movieScore(selectedMovie.upvote, selectedMovie.downvote)
-
-    movieLi.querySelector(".rating").innerHTML = selectedMovieRating;
-
-    if (movieLi === movieListUL.firstChild) {
-        prevMovie = NaN
-    } else {
-        prevMovie = parseInt(movieLi.previousElementSibling.querySelector(".rating").innerHTML);
-    }
-    if (movieLi === movieListUL.lastChild) {
-        nextMovie = NaN
-    } else {
-        nextMovie = parseInt(movieLi.nextElementSibling.querySelector(".rating").innerHTML);
-    }
-
-    if (selectedMovieRating > prevMovie || selectedMovieRating < nextMovie && (selectedMovieRating != parseInt(movieLi.nextElementSibling.querySelector(".rating").innerHTML))) {
-        movieLi.classList.add("move");
-        setTimeout(() => {
-            sortMovies(movieLi);
-        }, 250)
-        setTimeout(() => {
-            movieLi.classList.remove("move");
-        }, 500)
-    } else {
-        return
-    }
-
-}
+document.getElementById("add-movie").addEventListener("click", (e) => { addMovie(e) });
 
 function addMovie(event) {
     event.preventDefault();
@@ -202,7 +204,6 @@ function addMovie(event) {
         movieObject[movieId] = { title: movieName, rating: 0, upvote: 1, downvote: 1 };
         movieListUL.innerHTML = "";
         userAlert.innerHTML = "Movie added";
-        console.log(movieObject)
         generateMovies()
     }
 }
